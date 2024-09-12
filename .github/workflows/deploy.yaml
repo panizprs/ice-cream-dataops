@@ -4,8 +4,8 @@ on:
     branches:
       - main # run when this branch changes (following a Pull Request)
     paths:
-      - modules/** # run when changes in modules
-      - config.dev.yaml # run when changes in config.dev.yaml
+      - ice-cream-dataops/modules/** # run when changes in modules
+      - ice-cream-dataops/config.dev.yaml # run when changes in config.dev.yaml
   # Allow manual triggering of the workflow
   workflow_dispatch:
 
