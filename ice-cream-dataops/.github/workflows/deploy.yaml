@@ -1,0 +1,38 @@
+name: Deploy modules to test project
+on:
+  push:
+    branches:
+      - main # run when this branch changes (following a Pull Request)
+    paths:
+      - modules/** # run when changes in modules
+      - config.dev.yaml # run when changes in config.dev.yaml
+  # Allow manual triggering of the workflow
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: '3.11'
+jobs:
+  build-modules:
+    runs-on: ubuntu-latest
+    environment: dev
+    env:
+        CDF_CLUSTER: ${{ vars.CDF_CLUSTER }}
+        CDF_PROJECT: ${{ vars.CDF_PROJECT }}
+        IDP_CLIENT_ID: ${{ vars.IDP_CLIENT_ID }}
+        IDP_CLIENT_SECRET: ${{ secrets.IDP_CLIENT_SECRET }}
+        IDP_TOKEN_URL: ${{ vars.IDP_TOKEN_URL }}
+    name: Deploy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install cdf-tk
+        run: pip install cognite-toolkit
+      - name: "Build the templates"
+        run: cdf-tk build --build-dir=./build --env=dev
+      - name: "Deploy"
+        run: echo "Deploying to ${CDF_PROJECT} with ${CDF_CLUSTER}"
+      - name: "Deploy the templates"
+        run: |
+          cdf-tk deploy --env=dev

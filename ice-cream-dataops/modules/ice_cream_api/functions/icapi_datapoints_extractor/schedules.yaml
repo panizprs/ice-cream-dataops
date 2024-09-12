@@ -1,0 +1,29 @@
+- name: Frontfill every 10 minutes last hour of data (streamer)
+  functionExternalId: icapi_datapoints_extractor
+  cronExpression: "*/10 * * * *"
+- name: Backfill Oslo once a day for the last 30 days (gap filling)
+  functionExternalId: icapi_datapoints_extractor
+  cronExpression: "0 0 * * *"
+  data:
+    backfill: True
+    hours: 720
+    sites:
+      - Oslo
+      - Houston
+- name: Backfill Houston once a day for the last 30 days (gap filling)
+  functionExternalId: icapi_datapoints_extractor
+  cronExpression: "1 0 * * *"
+  data:
+    backfill: True
+    hours: 720
+    sites:
+      - Houston
+- name: Backfill Kuala Lumpur once a day for the last 30 days (gap filling)
+  functionExternalId: icapi_datapoints_extractor
+  cronExpression: "2 0 * * *"
+  data:
+    backfill: True
+    hours: 720
+    sites:
+      - Kuala Lumpur
+
