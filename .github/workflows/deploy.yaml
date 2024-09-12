@@ -36,4 +36,4 @@ jobs:
         run: echo "Deploying to ${CDF_PROJECT} with ${CDF_CLUSTER}"
       - name: "Deploy the templates"
         run: |
-          cdf-tk deploy --env=dev ice-cream-devops
+          cdf-tk deploy --env=dev ice-cream-dataops
