@@ -10,6 +10,6 @@
     CDF_PROJECT: {{ CDF_PROJECT }}
     CDF_URL: {{ CDF_URL }}
     IDP_TENANT_ID: {{ IDP_TENANT_ID }}
-    IDP_CLIENT_ID: {{ IDP_CLIENT_ID }}
-    IDP_CLIENT_SECRET: {{ IDP_CLIENT_SECRET }}
+    IDP_CLIENT_ID: {{ sp_oee_client_id }}
+    IDP_CLIENT_SECRET: {{ sp_oee_client_secret }}
     IDP_SCOPES: {{ IDP_SCOPES }}
