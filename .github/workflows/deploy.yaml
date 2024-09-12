@@ -31,9 +31,10 @@ jobs:
       - name: Install cdf-tk
         run: pip install cognite-toolkit
       - name: "Build the templates"
-        run: cdf-tk build --env=dev
+        run: cdf-tk build --env=dev ice-cream-dataops
       - name: "Deploy"
         run: echo "Deploying to ${CDF_PROJECT} with ${CDF_CLUSTER}"
       - name: "Deploy the templates"
         run: |
-          cdf-tk deploy --env=dev ice-cream-dataops
+          cd ice-cream-dataops
+          cdf-tk deploy --env=dev
