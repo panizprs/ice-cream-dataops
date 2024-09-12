@@ -31,7 +31,7 @@ jobs:
       - name: Install cdf-tk
         run: pip install cognite-toolkit
       - name: "Build the templates"
-        run: cdf-tk build --build-dir=./build --env=dev
+        run: cdf-tk build --env=dev
       - name: "Deploy"
         run: echo "Deploying to ${CDF_PROJECT} with ${CDF_CLUSTER}"
       - name: "Deploy the templates"
