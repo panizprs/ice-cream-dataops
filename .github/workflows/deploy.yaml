@@ -1,7 +1,7 @@
 name: Deploy modules to test project
 on:
   push:
-    branches: # test
+    branches:
       - main # run when this branch changes (following a Pull Request)
     paths:
       - modules/** # run when changes in modules
